@@ -1,0 +1,122 @@
+﻿@page
+@model AutoCompanyWebApplication.Pages.TechnicalSpecialistPages.EditingRepairingModel
+@{
+	ViewData["Title"] = "Edit Repairing";
+}
+
+@if (Model.errorMessage.Length > 0) {
+    <div class = "alert alert-warning alert-dismissible fade show" role = "alert">
+        <strong>@Model.errorMessage</strong>
+        <button type = "button" class = "btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<form method="POST">
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">DeliveryDate</label>
+        <div class = "col-sm-6">
+            <input type = "text" class = "form-control" name = "deliveryDate" value = "@EditingRepairingModel.repairing.DeliveryDate" autocomplete="off"/>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">DateOfIssue</label>
+        <div class = "col-sm-6">
+            <input type = "text" class = "form-control" name = "dateOfIssue" value = "@EditingRepairingModel.repairing.DateOfIssue" autocomplete="off"/>
+        </div>
+    </div>
+    <div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Vehicle</label>
+        <div class = "col-sm-6">
+            <select name="vehicle">
+                @foreach (var item in EditingRepairingModel.vehicles)
+                {
+                    @if (item.Id == EditingRepairingModel.repairing.VehicleId)
+                    {
+                        <option value="@item.Id" selected>@item.LicensePlate</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Id">@item.LicensePlate</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Garage</label>
+        <div class = "col-sm-6">
+            <select name="garage">
+                @foreach (var item in EditingRepairingModel.garages)
+                {
+                    @if (item.Id == EditingRepairingModel.repairing.GarageId)
+                    {
+                        <option value="@item.Id" selected>@item.Title</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Id">@item.Title</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Repairing Stage</label>
+        <div class = "col-sm-6">
+            <select name="stage">
+                @foreach (var item in EditingRepairingModel.stages)
+                {
+                    @if (item.Id == EditingRepairingModel.repairing.RepairingStageId)
+                    {
+                        <option value="@item.Id" selected>@item.Title</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Id">@item.Title</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Repairing type</label>
+        <div class = "col-sm-6">
+            <select name="type">
+                @foreach (var item in EditingRepairingModel.types)
+                {
+                    @if (item.Id == EditingRepairingModel.repairing.RepairingTypeId)
+                    {
+                        <option value="@item.Id" selected>@item.Title</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Id">@item.Title</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Staff</label>
+        <div class = "col-sm-6">
+            <select name="staff">
+                @foreach (var item in EditingRepairingModel.staffs)
+                {
+                    @if (item.Id == EditingRepairingModel.repairing.ServiceStaffId)
+                    {
+                        <option value="@item.Id" selected>@item.Surname</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Id">@item.Surname</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <div class = "offset-sm-3 col-sm-3 d-grid">
+            <button type = "submit" class="button-35">Submit</button>
+        </div>
+    </div>
+</form>

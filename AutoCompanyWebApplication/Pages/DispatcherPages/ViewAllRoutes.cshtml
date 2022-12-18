@@ -1,0 +1,42 @@
+﻿@page
+@model AutoCompanyWebApplication.Pages.DispatcherPages.ViewAllRoutesModel
+@{
+	ViewData["Title"] = "All routes";
+}
+
+<div class = "text-center">
+	<h2>List of all routes</h2>
+	<a class = "button-35" href="\DispatcherPages\AddingNewRoute">New route</a>
+	<table class="table">
+		<thead>
+			<tr> 
+				<th>ID</th>
+				<th>Title</th>
+				<th>CheckOutTime</th>
+				<th>ArrivalTime</th>
+				<th>Destination</th>
+				<th>VehicleTitle</th>
+				<th>DriverTitle</th>
+				<th>Buttons</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in ViewAllRoutesModel.routes)
+			{
+				<tr>
+					<td>@item.Id</td>
+					<td>@item.Title</td>
+					<td>@item.CheckOutTime</td>
+					<td>@item.ArrivalTime</td>
+					<td>@item.Destination</td>
+					<td>@item.VehiceTitle</td>
+					<td>@item.DriverTitle</td>
+					<td>
+						<a class = "button-35" href="/DispatcherPages/EditingRoute?ID=@item.Id">Edit</a>
+						<a class = "button-35" href="/DispatcherPages/DeletingRoute?ID=@item.Id">Delete</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>

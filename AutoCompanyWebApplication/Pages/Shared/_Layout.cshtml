@@ -1,0 +1,69 @@
+﻿@using AutoCompanyWebApplication.Classes;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AutoCompanyWebApplication</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AutoCompanyWebApplication.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" >AutoCompanyWebApplication</a>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    @if (CurrentUser.CurrUser?.RoleId == "1")
+                    {
+                        <nav class="navMenu">
+                            <a href="/TechnicalSpecialistPages/ViewAllRepairings" class = "text-dark">Repairings</a>
+                            <a></a>
+                            <a href="/TechnicalSpecialistPages/ViewAllQuery" class = "text-dark">Queries</a>
+                            <div class="dot"></div>
+                        </nav>
+                    }
+                    else if (CurrentUser.CurrUser?.RoleId == "2")
+                    {
+                        <nav class="navMenu">
+                            <a href="/DriverPages/AddingNewQuery" class = "text-dark">Query</a>
+                            <div class="dot"></div>
+                        </nav>
+                    }
+                    else if (CurrentUser.CurrUser?.RoleId == "3")
+                    {
+                        <nav class="navMenu">
+                            <a href="/HRPages/ViewAllStaff" class = "text-dark">Staff</a>
+                            <a href="/HRPages/ViewAllDrivers" class = "text-dark">Drivers</a>
+                            <div class="dot"></div>
+                        </nav>
+                    }
+                    else if (CurrentUser.CurrUser?.RoleId == "4")
+                    {
+                        <nav class="navMenu">
+                            <a href="/DispatcherPages/ViewAllRoutes" class = "text-dark">Routes</a>
+                            <div class="dot"></div>
+                        </nav>
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

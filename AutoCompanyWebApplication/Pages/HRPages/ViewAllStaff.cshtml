@@ -1,0 +1,48 @@
+﻿@page
+@model AutoCompanyWebApplication.Pages.HRPages.ViewAllStaffModel
+@{
+	ViewData["Title"] = "All drivers";
+}
+
+<div class = "text-center">
+	<h2>List of all staff</h2>
+	<a class = "button-35" href="\HRPages\AddingNewStaff">New staff</a>
+	<table class="table">
+		<thead>
+			<tr> 
+				<th>ID</th>
+				<th>Surname</th>
+				<th>Name</th>
+				<th>MiddleName</th>
+				<th>Birthday</th>
+				<th>AdmissionYear</th>
+				<th>Experience</th>
+				<th>Address</th>
+				<th>Telephone</th>
+				<th>Position</th>
+				<th>Buttons</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in ViewAllStaffModel.staffs)
+			{
+				<tr>
+					<td>@item.Id</td>
+					<td>@item.Surname</td>
+					<td>@item.Name</td>
+					<td>@item.MiddleName</td>
+					<td>@item.Birthday</td>
+					<td>@item.AdmissionYear</td>
+					<td>@item.Experience</td>
+					<td>@item.Address</td>
+					<td>@item.Telephone</td>
+					<td>@item.PositionTitle</td>
+					<td>
+						<a class = "button-35" href="/HRPages/EditingStaff?ID=@item.Id">Edit</a>
+						<a class = "button-35" href="/HRPages/DeletingStaff?ID=@item.Id">Delete</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>

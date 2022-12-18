@@ -1,0 +1,32 @@
+﻿@page
+@using System.Data.SqlClient;
+@{
+	string id = Request.Query["ID"];
+    try
+    {
+        string connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=AutoBase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+            string sql = "DELETE FROM Licenses WHERE Driver_Id = @Driver_Id";
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("@Driver_Id", id);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+            string sql = "DELETE FROM Drivers WHERE Driver_Id = @Driver_Id";
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("@Driver_Id", id);
+                command.ExecuteNonQuery();
+            }
+        }
+    }
+    catch (Exception ex) { }
+}

@@ -1,0 +1,86 @@
+﻿@page
+@model AutoCompanyWebApplication.Pages.HRPages.EditingStaffModel
+@{
+}
+
+@if (Model.errorMessage.Length > 0) {
+    <div class = "alert alert-warning alert-dismissible fade show" role = "alert">
+        <strong>@Model.errorMessage</strong>
+        <button type = "button" class = "btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<form method="POST">
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Surname</label>
+        <div class = "col-sm-6">
+            <input type = "text" class = "form-control" name = "surname" value = "@EditingStaffModel.staff.Surname" autocomplete="off"/>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Name</label>
+        <div class = "col-sm-6">
+            <input type = "text" class = "form-control" name = "name" value = "@EditingStaffModel.staff.Name" autocomplete="off"/>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Middle name</label>
+        <div class = "col-sm-6">
+            <input type = "text" class = "form-control" name = "middleName" value = "@EditingStaffModel.staff.MiddleName" autocomplete="off"/>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Birthday</label>
+        <div class = "col-sm-6">
+            <input type = "text" class = "form-control" name = "birthday" value = "@EditingStaffModel.staff.Birthday" autocomplete="off"/>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Admission year</label>
+        <div class = "col-sm-6">
+            <input type = "number" class = "form-control" name = "admissionYear" value = "@EditingStaffModel.staff.AdmissionYear" autocomplete="off"/>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Experience</label>
+        <div class = "col-sm-6">
+            <input type = "number" class = "form-control" name = "experience" value = "@EditingStaffModel.staff.Experience" autocomplete="off"/>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Telephone</label>
+        <div class = "col-sm-6">
+            <input type = "text" class = "form-control" name = "telephone" value = "@EditingStaffModel.staff.Telephone" autocomplete="off"/>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Address</label>
+        <div class = "col-sm-6">
+            <input type = "text" class = "form-control" name = "address" value = "@EditingStaffModel.staff.Address" autocomplete="off"/>
+        </div>
+    </div>
+    <div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Position</label>
+        <div class = "col-sm-6">
+            <br />
+            <select name="items">
+                @foreach (var item in EditingStaffModel.positions)
+                {
+                    @if (item.Id == EditingStaffModel.staff.PositionId)
+                    {
+                        <option value="@item.Id" selected>@item.Title</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Id">@item.Title</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <div class = "offset-sm-3 col-sm-3 d-grid">
+            <button type = "submit" class="button-35">Submit</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,32 @@
+﻿@page
+@model AutoCompanyWebApplication.Pages.DriverPages.AddingNewQueryModel
+@{
+	ViewData["Title"] = "New query";
+}
+
+@if (Model.errorMessage.Length > 0) {
+    <div class = "alert alert-warning alert-dismissible fade show" role = "alert">
+        <strong>@Model.errorMessage</strong>
+        <button type = "button" class = "btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<form method="POST">
+    <div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Vehicle</label>
+        <div class = "col-sm-6">
+            <br />
+            <select name="vehicles">
+                @foreach (var item in AddingNewQueryModel.vehicles)
+                {
+                    <option value="@item.Id">@item.LicensePlate</option>
+                }
+            </select>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <div class = "offset-sm-3 col-sm-3 d-grid">
+            <button type = "submit" class="button-35">Submit</button>
+        </div>
+    </div>
+</form>

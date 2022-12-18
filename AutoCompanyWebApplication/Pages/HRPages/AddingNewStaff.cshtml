@@ -1,0 +1,80 @@
+﻿@page
+@model AutoCompanyWebApplication.Pages.HRPages.AddingNewStaffModel
+@{
+	ViewData["Title"] = "New staff";
+}
+
+@if (Model.errorMessage.Length > 0) {
+    <div class = "alert alert-warning alert-dismissible fade show" role = "alert">
+        <strong>@Model.errorMessage</strong>
+        <button type = "button" class = "btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<form method="POST">
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Surname</label>
+        <div class = "col-sm-6">
+            <input type = "text" class = "form-control" name = "surname" value = "" autocomplete="off"/>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Name</label>
+        <div class = "col-sm-6">
+            <input type = "text" class = "form-control" name = "name" value = "" autocomplete="off"/>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Middle name</label>
+        <div class = "col-sm-6">
+            <input type = "text" class = "form-control" name = "middleName" value = "" autocomplete="off"/>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Birthday</label>
+        <div class = "col-sm-6">
+            <input type = "text" class = "form-control" name = "birthday" value = "" autocomplete="off"/>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Admission year</label>
+        <div class = "col-sm-6">
+            <input type = "number" class = "form-control" name = "admissionYear" value = "" autocomplete="off"/>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Experience</label>
+        <div class = "col-sm-6">
+            <input type = "number" class = "form-control" name = "experience" value = "" autocomplete="off"/>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Telephone</label>
+        <div class = "col-sm-6">
+            <input type = "text" class = "form-control" name = "telephone" value = "" autocomplete="off"/>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Address</label>
+        <div class = "col-sm-6">
+            <input type = "text" class = "form-control" name = "address" value = "" autocomplete="off"/>
+        </div>
+    </div>
+    <div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Position</label>
+        <div class = "col-sm-6">
+            <br />
+            <select name="items">
+                @foreach (var item in AddingNewStaffModel.positions)
+                {
+                    <option value="@item.Title">@item.Title</option>
+                }
+            </select>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <div class = "offset-sm-3 col-sm-3 d-grid">
+            <button type = "submit" class="button-35">Submit</button>
+        </div>
+    </div>
+</form>

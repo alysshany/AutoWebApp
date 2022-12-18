@@ -1,0 +1,43 @@
+﻿@page
+@model AutoCompanyWebApplication.Pages.TechnicalSpecialistPages.ViewAllRepairingsModel
+@{
+	ViewData["Title"] = "All repairings";
+}
+
+<div class = "text-center">
+	<h2>List of all queries</h2>
+	<table class="table">
+		<thead>
+			<tr> 
+				<th>ID</th>
+				<th>DeliveryDate</th>
+				<th>DateOfIssue</th>
+				<th>Vehicle</th>
+				<th>Garage</th>
+				<th>RepairingStage</th>
+				<th>RepairingType</th>
+				<th>Staff</th>
+				<th>Buttons</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in ViewAllRepairingsModel.repairings)
+			{
+				<tr>
+					<td>@item.Id</td>
+					<td>@item.DeliveryDate</td>
+					<td>@item.DateOfIssue</td>
+					<td>@item.VehicleTitle</td>
+					<td>@item.GarageTitle</td>
+					<td>@item.RepairingStageTitle</td>
+					<td>@item.RepairingTypeTitle</td>
+					<td>@item.ServiceStaffTitle</td>
+					<td>
+						<a class = "button-35" href="/TechnicalSpecialistPages/EditingRepairing?ID=@item.Id">Edit</a>
+						<a class = "button-35" href="/TechnicalSpecialistPages/DeletingRepairing?ID=@item.Id">Delete</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,82 @@
+﻿@page
+@using System.Linq;
+@model AutoCompanyWebApplication.Pages.HRPages.EditingDriverModel
+@{
+}
+
+<br />
+<h2>Edit Driver</h2>
+
+@if (Model.errorMessage.Length > 0) {
+    <div class = "alert alert-warning alert-dismissible fade show" role = "alert">
+        <strong>@Model.errorMessage</strong>
+        <button type = "button" class = "btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<form method="POST">
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Surname</label>
+        <div class = "col-sm-6">
+            <input type = "text" class = "form-control" name = "surname" value = "@EditingDriverModel.driver.Surname" autocomplete="off"/>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Name</label>
+        <div class = "col-sm-6">
+            <input type = "text" class = "form-control" name = "name" value = "@EditingDriverModel.driver.Name" autocomplete="off"/>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Middle name</label>
+        <div class = "col-sm-6">
+            <input type = "text" class = "form-control" name = "middleName" value = "@EditingDriverModel.driver.MiddleName" autocomplete="off"/>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Birthday</label>
+        <div class = "col-sm-6">
+            <input type = "text" class = "form-control" name = "birthday" value = "@EditingDriverModel.driver.Birthday" autocomplete="off"/>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Admission year</label>
+        <div class = "col-sm-6">
+            <input type = "number" class = "form-control" name = "admissionYear" value = "@EditingDriverModel.driver.AdmissionYear" autocomplete="off"/>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Experience</label>
+        <div class = "col-sm-6">
+            <input type = "number" class = "form-control" name = "experience" value = "@EditingDriverModel.driver.Experience" autocomplete="off"/>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Telephone</label>
+        <div class = "col-sm-6">
+            <input type = "text" class = "form-control" name = "telephone" value = "@EditingDriverModel.driver.Telephone" autocomplete="off"/>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Address</label>
+        <div class = "col-sm-6">
+            <input type = "text" class = "form-control" name = "address" value = "@EditingDriverModel.driver.Address" autocomplete="off"/>
+        </div>
+    </div>
+    <div class = "row mb-3">
+        <label class = "col-sm-3 col-form-label">Categories</label>
+        <div class = "col-sm-6">
+            <select multiple name="items" SelectionMode = "multiple" >
+                @foreach (var item in EditingDriverModel.categories)
+                {
+                    <option value="@item.Id">@item.Category</option>
+                }
+            </select>
+        </div>
+    </div>
+	<div class = "row mb-3">
+        <div class = "offset-sm-3 col-sm-3 d-grid">
+            <button type = "submit" class="button-35">Submit</button>
+        </div>
+    </div>
+</form>
